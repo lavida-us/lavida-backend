@@ -1,5 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
 
+from .account import Account
+from .problem import Problem
+from .submission import Submission
+
 db = SQLAlchemy()
 
 def init_app(app, config):
