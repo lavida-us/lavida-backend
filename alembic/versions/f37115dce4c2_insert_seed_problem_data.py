@@ -20,19 +20,12 @@ def upgrade():
     meta = sa.MetaData(bind=op.get_bind())
     meta.reflect(only=('problem',))
     problem_table_tbl = sa.Table('problem', meta)
-
+    
     op.bulk_insert(
         problem_table_tbl,
         [
             {
                 'title': '아름다운 만영로',
-                'writers': [
-                    {'name': '한만영', 'email': '한만영@이메일.com', 'homepage': 'https://만영홈페이지.com'},
-                ],
-                'editors': [
-                    {'name': 'X준X', 'email': 'X준X@이메일.com', 'homepage': 'https://X준X홈페이지.com'},
-                    {'name': '김XX', 'email': '김XX@이메일.com', 'homepage': 'https://김XX홈페이지.com'},
-                ],
                 'source_name': '2019 아주대학교 프로그래밍 경시대회 APC - Div.1',
                 'source_url': None,
             },

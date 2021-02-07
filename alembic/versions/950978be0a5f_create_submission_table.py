@@ -34,8 +34,8 @@ def upgrade():
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('owned_account_id', sa.Integer, sa.ForeignKey('account.id'), nullable=False),
         sa.Column('problem_id', sa.Integer, sa.ForeignKey('problem.id'), nullable=False),
-        sa.Column('status', sa.Enum(Status), nullable=False),
-        sa.Column('result', sa.Enum(Result)),
+        sa.Column('status', sa.Enum(Status, name="status_type", create_type=False), nullable=False),
+        sa.Column('result', sa.Enum(Result, name="result_type", create_type=False)),
         sa.Column('time', sa.Float),
         sa.Column('memory', sa.Float),
         sa.Column('programming_language', sa.String),
@@ -43,4 +43,6 @@ def upgrade():
 
 
 def downgrade():
+    op.execute('DROP TYPE result_type CASCADE')
+    op.execute('DROP TYPE status_type CASCADE')
     op.drop_table('submission')
