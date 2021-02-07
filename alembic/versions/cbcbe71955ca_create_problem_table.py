@@ -34,8 +34,6 @@ def upgrade():
         'problem',
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('title', sa.String(128), nullable=False),
-        sa.Column('writers', sa.types.ARRAY(sa.JSON)),
-        sa.Column('editors', sa.types.ARRAY(sa.JSON)),
         sa.Column('source_name', sa.String),
         sa.Column('source_url', sa.String),
     )
