@@ -1,10 +1,12 @@
 from flask import Flask
+from flask_cors import CORS
 
 from . import config
 
 def create_app():
     from . import models, schemas
     app = Flask(__name__)
+    CORS(app)
     models.init_app(app, config)
     schemas.init_app(app, config)
     return app
