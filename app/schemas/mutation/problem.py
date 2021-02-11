@@ -1,7 +1,7 @@
 from graphene import Field, ObjectType, InputObjectType, ID, String, List, NonNull
 
 from app.schemas.type import Problem
-from app.resolvers import resolve_update_problem, resolve_create_problem
+from app.resolvers import resolve_update_problem, resolve_create_problem, resolve_delete_problem
 
 class UpdateProblemInput(InputObjectType):
     id = ID(required=True)
@@ -16,6 +16,9 @@ class CreateProblemInput(InputObjectType):
     writer_ids = List(NonNull(ID))
     editor_ids = List(NonNull(ID))
 
+class DeleteProblemInput(InputObjectType):
+    id = ID(required=True)
+
 class MutateProblem(ObjectType):
     class Meta:
         abstract = True
@@ -25,3 +28,6 @@ class MutateProblem(ObjectType):
 
     create_problem = Field(Problem, input=CreateProblemInput())
     resolve_create_problem = resolve_create_problem
+
+    delete_problem = Field(Problem, input=DeleteProblemInput())
+    resolve_delete_problem = resolve_delete_problem
