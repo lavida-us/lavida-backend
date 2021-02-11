@@ -1,7 +1,7 @@
-from app.models import Problem
+from app import core
 
 def resolve_problem(parent, info, input):
     session = info.context['session']
     id = input.id
 
-    return session.query(Problem).get(id)
+    return core.get_problem_by_id(session, id)
