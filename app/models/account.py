@@ -17,9 +17,3 @@ class Account(Base):
     written_problems = relationship("Problem", secondary=association_table_problem_writing)
     edited_problems = relationship("Problem", secondary=association_table_problem_editing)
     submissions = relationship("Submission", back_populates="owned_account")
-
-    def update(self, **kwargs):
-        for key, value in kwargs.items():
-            if value is not None and key in Account.update.update_attr:
-                setattr(self, key, value)
-    update.update_attr = ['email', 'univ', 'profile_nickname', 'profile_image']

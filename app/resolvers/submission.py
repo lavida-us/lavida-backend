@@ -1,7 +1,7 @@
-from app import core
+from app.models import Submission
 
 def resolve_submission(parent, info, input):
     session = info.context['session']
     id = input.id
 
-    return core.get_submission_by_id(session, id)
+    return session.query(Submission).get(id)
