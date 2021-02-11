@@ -22,3 +22,10 @@ class Problem(Base):
             if value is not None and key in Problem.update.update_attr:
                 setattr(self, key, value)
     update.update_attr = ['title', 'source_name', 'source_url']
+
+    def create(**kwargs):
+        problem = Problem()
+        problem.update(**kwargs)
+        problem.writers.extend(kwargs['writers'])
+        problem.editors.extend(kwargs['editors'])
+        return problem

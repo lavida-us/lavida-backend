@@ -10,3 +10,9 @@ def update_problem_by_id(session, id, input):
     problem.update(**input)
     session.commit()
     return problem
+
+def create_problem_by_id(session, input):
+    problem = Problem.create(**input)
+    session.add(problem)
+    session.commit()
+    return problem
