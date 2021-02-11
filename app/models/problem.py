@@ -16,3 +16,9 @@ class Problem(Base):
     writers = relationship("Account", secondary=association_table_problem_writing)
     editors = relationship("Account", secondary=association_table_problem_editing)
     submissions = relationship("Submission", back_populates="problem")
+
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            if value is not None and key in Problem.update.update_attr:
+                setattr(self, key, value)
+    update.update_attr = ['title', 'source_name', 'source_url']
