@@ -1,6 +1,6 @@
 import enum
 
-from sqlalchemy import Column, Integer, String, JSON, ARRAY, Float, ForeignKey, Enum
+from sqlalchemy import Column, Integer, String, JSON, ARRAY, Float, ForeignKey, Enum, TIMESTAMP
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
@@ -31,3 +31,6 @@ class Submission(Base):
     time = Column(Float)
     memory = Column(Float)
     programming_language = Column(String)
+
+    inserted_at = Column(TIMESTAMP)
+    updated_at = Column(TIMESTAMP)

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, JSON, ARRAY
+from sqlalchemy import Column, Integer, String, JSON, ARRAY, TIMESTAMP
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 import sqlalchemy.types as types
@@ -12,6 +12,9 @@ class Problem(Base):
     title = Column(String(128), nullable=False)
     source_name = Column(String)
     source_url = Column(String)
+
+    inserted_at = Column(TIMESTAMP)
+    updated_at = Column(TIMESTAMP)
 
     writers = relationship("Account", secondary=association_table_problem_writing)
     editors = relationship("Account", secondary=association_table_problem_editing)

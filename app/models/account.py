@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, TIMESTAMP
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
@@ -13,6 +13,9 @@ class Account(Base):
     univ = Column(String(128))
     profile_nickname = Column(String(128))
     profile_image = Column(String(65536))
+
+    inserted_at = Column(TIMESTAMP)
+    updated_at = Column(TIMESTAMP)
 
     written_problems = relationship("Problem", secondary=association_table_problem_writing)
     edited_problems = relationship("Problem", secondary=association_table_problem_editing)

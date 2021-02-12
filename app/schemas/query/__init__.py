@@ -1,3 +1,3 @@
-from .account import QueryAccount, AccountInput
-from .problem import QueryProblem, ProblemInput
-from .submission import QuerySubmission, SubmissionInput
+from .account import QueryAccount, GetAccountInput
+from .problem import QueryProblem, GetProblemInput
+from .submission import QuerySubmission, GetSubmissionInput
