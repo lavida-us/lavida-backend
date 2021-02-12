@@ -1,6 +1,6 @@
 from app import core
 
-def resolve_account(parent, info, input):
+def resolve_get_account(parent, info, input):
     session = info.context['session']
     id = input.id
 

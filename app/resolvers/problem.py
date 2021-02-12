@@ -1,6 +1,6 @@
 from app import core
 
-def resolve_problem(parent, info, input):
+def resolve_get_problem(parent, info, input):
     session = info.context['session']
     id = input.id
 

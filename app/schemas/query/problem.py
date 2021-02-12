@@ -1,14 +1,14 @@
 from graphene import Field, ObjectType, InputObjectType, ID
 
 from app.schemas.type import Problem
-from app.resolvers import resolve_problem
+from app.resolvers import resolve_get_problem
 
-class ProblemInput(InputObjectType):
+class GetProblemInput(InputObjectType):
     id = ID(required=True)
 
 class QueryProblem(ObjectType):
     class Meta:
         abstract = True
 
-    problem = Field(Problem, input=ProblemInput())
-    resolve_problem = resolve_problem
+    get_problem = Field(Problem, input=GetProblemInput())
+    resolve_get_problem = resolve_get_problem
