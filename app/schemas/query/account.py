@@ -1,14 +1,14 @@
 from graphene import Field, ObjectType, InputObjectType, ID
 
 from app.schemas.type.account import Account
-from app.resolvers.account import resolve_account
+from app.resolvers.account import resolve_get_account
 
-class AccountInput(InputObjectType):
+class GetAccountInput(InputObjectType):
     id = ID(required=True)
 
 class QueryAccount(ObjectType):
     class Meta:
         abstract = True
 
-    account = Field(Account, input=AccountInput())
-    resolve_account = resolve_account
+    get_account = Field(Account, input=GetAccountInput())
+    resolve_get_account = resolve_get_account
